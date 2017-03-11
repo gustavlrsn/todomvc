@@ -173,14 +173,13 @@ jQuery(function ($) {
 			var $el = $(el);
 			var val = $el.val().trim();
 
-			if (!val) {
-				this.destroy(e);
-				return;
-			}
-
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else {
+				if (!val) {
+					this.destroy(e);
+					return;
+				}
 				this.todos[this.indexFromEl(el)].title = val;
 			}
 
